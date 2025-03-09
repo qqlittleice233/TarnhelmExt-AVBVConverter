@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "cn.ac.lz233.tarnhelm.ext.template"
+    namespace = "art.qqlittleice.tarnhelm.ext.avbvconverter"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "cn.ac.lz233.tarnhelm.ext.template"
+        applicationId = "art.qqlittleice.tarnhelm.ext.avbvconverter"
         minSdk = 27
         targetSdk = 35
         versionCode = 1
@@ -18,7 +18,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

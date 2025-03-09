@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TarnhelmExt-Template"
+rootProject.name = "TarnhelmExt-AVBVConverter"
 include(":app")
 include(":api")
