@@ -1,5 +1,7 @@
 package art.qqlittleice.tarnhelm.ext.avbvconverter
 
+import android.content.Context
+import android.view.View
 import cn.ac.lz233.tarnhelm.extension.api.ExtContext
 import cn.ac.lz233.tarnhelm.extension.api.ExtService
 
@@ -11,23 +13,6 @@ class ConverterExtService(extContext: ExtContext): ExtService(extContext) {
     }
 
     override fun onExtInstall() {}
-
-    override fun handleLoadString(charSequence: CharSequence): String {
-        val matchResult = match(charSequence)
-        if (matchResult.isSuccess) {
-            val pair = matchResult.getOrNull()!!
-            val replace = pair.second.replace(Common.start, "")
-            return when (pair.first) {
-                Type.AV -> {
-                    charSequence.toString().replace(pair.second, "${Common.start}${av2bv(replace)}")
-                }
-                Type.BV -> {
-                    charSequence.toString().replace(pair.second, "${Common.start}${bv2av(replace)}")
-                }
-            }
-        }
-        return charSequence.toString()
-    }
 
     private fun av2bv(av: String): String {
         return AVBVConverter.av2bv(av.replace("av", "").toLong())
@@ -56,8 +41,28 @@ class ConverterExtService(extContext: ExtContext): ExtService(extContext) {
 
     override fun onExtUninstall() {}
 
-    override fun checkUpdate(): String {
+    override fun onCheckUpdate(): String {
         return "https://github.com/qqlittleice233/TarnhelmExt-AVBVConverter"
     }
 
+    override fun onHandleString(charSequence: CharSequence): String {
+        val matchResult = match(charSequence)
+        if (matchResult.isSuccess) {
+            val pair = matchResult.getOrNull()!!
+            val replace = pair.second.replace(Common.start, "")
+            return when (pair.first) {
+                Type.AV -> {
+                    charSequence.toString().replace(pair.second, "${Common.start}${av2bv(replace)}")
+                }
+                Type.BV -> {
+                    charSequence.toString().replace(pair.second, "${Common.start}${bv2av(replace)}")
+                }
+            }
+        }
+        return charSequence.toString()
+    }
+
+    override fun onRequestConfigurationPanel(context: Context?): View? {
+        return null
+    }
 }

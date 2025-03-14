@@ -20,18 +20,14 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class TarnhelmExtEntry {
-    public static java.lang.String entryClassName;
-}
-
--keep class * extends cn.ac.lz233.tarnhelm.extension.api.ITarnhelmExt {
+-keep class TarnhelmExt implements cn.ac.lz233.tarnhelm.extension.api.ITarnhelmExt {
     <init>();
     <clinit>();
     cn.ac.lz233.tarnhelm.extension.api.ITarnhelmExt$ExtInfo extensionInfo();
     cn.ac.lz233.tarnhelm.extension.api.ExtService createExtensionService(cn.ac.lz233.tarnhelm.extension.api.ExtContext);
 }
 
--keep class * extends cn.ac.lz233.tarnhelm.extension.api.ITarnhelmExt$ExtInfo {
+-keep class * implements cn.ac.lz233.tarnhelm.extension.api.ITarnhelmExt$ExtInfo {
     <init>();
     <clinit>();
     java.lang.String id();
@@ -49,16 +45,11 @@
 
 -keep class * extends cn.ac.lz233.tarnhelm.extension.api.ExtService {
     <init>();
-    <init>(cn.ac.lz233.tarnhelm.extension.api.ExtContext);
     <clinit>();
+    <init>(cn.ac.lz233.tarnhelm.extension.api.ExtContext);
     void onExtInstall();
     void onExtUninstall();
-    java.lang.String handleLoadString(java.lang.CharSequence);
-    java.lang.String checkUpdate();
-}
-
--keep class * extends cn.ac.lz233.tarnhelm.extension.api.IExtConfigurationPanel {
-    <init>();
-    <clinit>();
-    android.view.View onRequestConfigurationPanel(android.content.Context, cn.ac.lz233.tarnhelm.extension.api.ExtSharedPreferences);
+    java.lang.String onCheckUpdate();
+    java.lang.String onHandleString(java.lang.CharSequence);
+    android.view.View onRequestConfigurationPanel(android.content.Context);
 }

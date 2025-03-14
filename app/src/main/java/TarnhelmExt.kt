@@ -1,11 +1,11 @@
-package art.qqlittleice.tarnhelm.ext.avbvconverter
-
 import android.os.Build
+import art.qqlittleice.tarnhelm.ext.avbvconverter.Common
+import art.qqlittleice.tarnhelm.ext.avbvconverter.ConverterExtService
 import cn.ac.lz233.tarnhelm.extension.api.ExtContext
 import cn.ac.lz233.tarnhelm.extension.api.ExtService
 import cn.ac.lz233.tarnhelm.extension.api.ITarnhelmExt
 
-class ConverterExtImpl: ITarnhelmExt {
+class TarnhelmExt: ITarnhelmExt {
 
     override fun extensionInfo(): ITarnhelmExt.ExtInfo = object : ITarnhelmExt.ExtInfo {
         override fun id(): String = "art.qqlittleice.tarnhelm.ext.avbvconverter"
